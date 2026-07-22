@@ -1,0 +1,12 @@
+{
+  "name": "pagerain.org",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "serve . --listen 41789",
+    "start": "serve . --listen 41789"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
