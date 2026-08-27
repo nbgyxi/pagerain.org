@@ -11,18 +11,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  @media (max-width: 760px) {
-    nav { display: none !important; }
-    header > div { padding: 12px 16px !important; }
-    header > div > div:last-child a:first-child { display: none !important; }
-    section > div[style*="grid-template-columns:1fr 1fr"],
-    section > div[style*="grid-template-columns:repeat(3,1fr)"],
-    section[style*="grid-template-columns:1fr 1fr"],
-    section[style*="grid-template-columns:1fr 1.05fr"] {
-      grid-template-columns: 1fr !important;
-    }
-    section { max-width: 100vw; }
-  }
   body{margin:0;background:#04060b;color:#eef1f7;font-family:'Instrument Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
   h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0;}
   p{margin:0;}
@@ -31,6 +19,48 @@
   @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
   @keyframes glowPulse{0%,100%{opacity:.45;transform:scale(1)}50%{opacity:.85;transform:scale(1.08)}}
   @keyframes prWave{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  .nav-bar{display:flex;align-items:center;gap:24px;padding:14px 24px;max-width:1080px;margin:0 auto;}
+  .nav-links{margin-left:22px;display:flex;gap:4px;}
+  .nav-actions{margin-left:auto;display:flex;align-items:center;gap:11px;}
+  .hero-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:92px 24px 40px;text-align:center;}
+  .hero-lede{max-width:640px;margin:26px auto 0;color:#a4adbf;font-size:19px;line-height:1.6;}
+  .claim-strip{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1c2230;border:1px solid #242a37;border-radius:18px;overflow:hidden;animation:floatY 9s ease-in-out infinite;}
+  .claim-cell{background:#0e121a;padding:28px 20px;}
+  .pledge-grid{margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;}
+  .causes-wrap{max-width:1080px;margin:0 auto;padding:84px 24px;}
+  .causes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .cta-panel{position:relative;overflow:hidden;border-radius:26px;border:1px solid #24513c;background:linear-gradient(135deg,#0f2119,#0c0f1c);padding:64px 40px;text-align:center;}
+  .footer-bar{max-width:1080px;margin:0 auto;padding:40px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+  .footer-links{margin-left:auto;display:flex;gap:20px;}
+
+  @media (max-width: 900px) {
+    .causes-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  @media (max-width: 760px) {
+    .nav-links{display:none;}
+    .nav-bar{padding:12px 16px;gap:12px;}
+    .nav-actions a:first-child{display:none;}
+    .nav-actions a:last-child{padding:0 14px;font-size:13px;height:36px;}
+    .hero-inner{padding:56px 16px 28px;}
+    .hero-lede{font-size:16.5px;margin-top:20px;}
+    .claim-strip{margin-top:36px;grid-template-columns:1fr;border-radius:14px;}
+    .claim-cell{padding:22px 18px;}
+    .pledge-grid{grid-template-columns:1fr;}
+    #pledge{padding:56px 16px 12px !important;}
+    .causes-wrap{padding:56px 16px;}
+    .causes-grid{grid-template-columns:1fr;}
+    .cta-section{padding:12px 16px 72px !important;}
+    .cta-panel{padding:40px 20px;border-radius:18px;}
+    .footer-bar{padding:28px 16px;align-items:flex-start;}
+    .footer-tagline{margin-left:0 !important;width:100%;}
+    .footer-links{margin-left:0;width:100%;}
+  }
+
+  @media (max-width: 420px) {
+    .nav-actions a:last-child{padding:0 12px;font-size:12.5px;}
+  }
 </style>
 </head>
 <body>
@@ -39,8 +69,8 @@
 
 <!-- ===================== NAV ===================== -->
 <header style="position:sticky;top:0;z-index:60;backdrop-filter:blur(14px);background:rgba(6,8,14,.72);border-bottom:1px solid #1a1f2b;">
-  <div style="max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:24px;">
-    <a href="#top" style="display:inline-flex;align-items:center;gap:11px;">
+  <div class="nav-bar">
+    <a href="#top" style="display:inline-flex;align-items:center;gap:11px;min-width:0;">
       <span style="width:34px;height:34px;flex:0 0 34px;box-sizing:border-box;border-radius:10px;background:linear-gradient(150deg,#736dff,#3ecbef);display:inline-flex;align-items:flex-end;justify-content:center;gap:2.5px;padding-bottom:8px;overflow:hidden;">
         <span style="width:3px;height:10px;border-radius:2px;background:rgba(255,255,255,.92);"></span>
         <span style="width:3px;height:15px;border-radius:2px;background:rgba(255,255,255,.92);"></span>
@@ -51,12 +81,11 @@
         <span style="font:600 10.5px 'IBM Plex Mono';color:#3ecbef;letter-spacing:.06em;margin-top:3px;">.ORG · GIVING</span>
       </span>
     </a>
-    <nav style="margin-left:22px;display:flex;gap:4px;">
+    <nav class="nav-links">
       <a href="#pledge" style="padding:8px 13px;border-radius:9px;font:600 14px 'Instrument Sans';color:#a4adbf;">The pledge</a>
-      <a href="#where" style="padding:8px 13px;border-radius:9px;font:600 14px 'Instrument Sans';color:#a4adbf;">Where it goes</a>
       <a href="#causes" style="padding:8px 13px;border-radius:9px;font:600 14px 'Instrument Sans';color:#a4adbf;">Causes</a>
     </nav>
-    <div style="margin-left:auto;display:flex;align-items:center;gap:11px;">
+    <div class="nav-actions">
       <a href="https://pagerain.com" style="height:38px;padding:0 15px;border-radius:9px;display:inline-flex;align-items:center;font:600 13.5px 'Instrument Sans';color:#a4adbf;background:transparent;">pagerain.com ↗</a>
       <a href="#pledge" style="height:38px;padding:0 17px;border-radius:9px;display:inline-flex;align-items:center;gap:7px;font:600 13.5px 'Instrument Sans';color:#fff;background:#2fd08a;border:1px solid #2fd08a;box-shadow:0 6px 20px rgba(47,208,138,.3);">Read the pledge</a>
     </div>
@@ -70,30 +99,29 @@
     <div data-anim style="position:absolute;top:70px;right:8%;width:460px;height:460px;border-radius:50%;background:radial-gradient(circle,rgba(115,109,255,.28),transparent 62%);filter:blur(28px);animation:glowPulse 10s ease-in-out infinite;"></div>
   </div>
 
-  <div style="position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:92px 24px 40px;text-align:center;">
-    <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(47,208,138,.14);border:1px solid rgba(47,208,138,.32);color:#7ee6b8;font:600 12px 'Instrument Sans';">
-      <span style="width:6px;height:6px;border-radius:50%;background:#2fd08a;"></span>The PageRain giving pledge · No end date
+  <div class="hero-inner">
+    <span style="display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:rgba(47,208,138,.14);border:1px solid rgba(47,208,138,.32);color:#7ee6b8;font:600 12px 'Instrument Sans';max-width:100%;box-sizing:border-box;">
+      <span style="width:6px;height:6px;border-radius:50%;background:#2fd08a;flex-shrink:0;"></span>The PageRain giving pledge · No end date
     </span>
-    <h1 style="margin:26px auto 0;max-width:920px;font-weight:700;font-size:clamp(42px,6vw,76px);line-height:1;letter-spacing:-.03em;">
+    <h1 style="margin:26px auto 0;max-width:920px;font-weight:700;font-size:clamp(34px,8.5vw,76px);line-height:1.05;letter-spacing:-.03em;">
       <span style="background:linear-gradient(120deg,#3fe0a0,#3ecbef);-webkit-background-clip:text;background-clip:text;color:transparent;">100% through 2027.</span><br>At least 80%, always.
     </h1>
-    <p style="max-width:640px;margin:26px auto 0;color:#a4adbf;font-size:19px;line-height:1.6;">For all of 2026 and 2027, every dollar of PageRain's net profit is given to charities defending human rights around the world. From 2028 onward, we will always give at least 80% of net profit. This pledge has no end date.</p>
+    <p class="hero-lede">For all of 2026 and 2027, every dollar of PageRain's net profit is given to charities defending human rights around the world. From 2028 onward, we will always give at least 80% of net profit. This pledge has no end date.</p>
     <div style="margin-top:34px;display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
       <a href="#pledge" style="height:52px;padding:0 26px;border-radius:12px;display:inline-flex;align-items:center;gap:9px;font:600 15px 'Instrument Sans';color:#fff;background:#2fd08a;border:1px solid #2fd08a;box-shadow:0 10px 34px rgba(47,208,138,.36);">Read the full pledge</a>
-      <a href="#where" style="height:52px;padding:0 24px;border-radius:12px;display:inline-flex;align-items:center;gap:9px;font:600 15px 'Instrument Sans';color:#eef1f7;background:#171b25;border:1px solid #2f3646;">See where money goes →</a>
     </div>
 
     <!-- big claim strip -->
-    <div data-anim style="margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#1c2230;border:1px solid #242a37;border-radius:18px;overflow:hidden;animation:floatY 9s ease-in-out infinite;">
-      <div style="background:#0e121a;padding:28px 20px;">
+    <div data-anim class="claim-strip">
+      <div class="claim-cell">
         <div style="font:700 clamp(30px,4vw,46px) 'Space Grotesk';color:#2fd08a;letter-spacing:-.02em;">100%</div>
         <div style="margin-top:6px;font:500 13px 'Instrument Sans';color:#a4adbf;">of net profit in 2026–2027</div>
       </div>
-      <div style="background:#0e121a;padding:28px 20px;">
+      <div class="claim-cell">
         <div style="font:700 clamp(30px,4vw,46px) 'Space Grotesk';color:#eef1f7;letter-spacing:-.02em;">80%+</div>
         <div style="margin-top:6px;font:500 13px 'Instrument Sans';color:#a4adbf;">minimum from 2028 onward</div>
       </div>
-      <div style="background:#0e121a;padding:28px 20px;">
+      <div class="claim-cell">
         <div style="font:700 clamp(30px,4vw,46px) 'Space Grotesk';color:#3ecbef;letter-spacing:-.02em;">Human<span style="color:#6d7688;"> rights</span></div>
         <div style="margin-top:6px;font:500 13px 'Instrument Sans';color:#a4adbf;">vetted, transparent recipients</div>
       </div>
@@ -112,10 +140,10 @@
 <!-- ===================== THE PLEDGE ===================== -->
 <section id="pledge" style="max-width:900px;margin:0 auto;padding:80px 24px 20px;text-align:center;">
   <div data-reveal><span style="display:inline-block;padding:6px 13px;border-radius:999px;background:rgba(47,208,138,.14);border:1px solid rgba(47,208,138,.3);color:#7ee6b8;font:600 12px 'Instrument Sans';">The pledge, in plain words</span></div>
-  <h2 data-reveal style="margin:22px auto 0;font-weight:700;font-size:clamp(28px,3.8vw,44px);line-height:1.1;letter-spacing:-.02em;">We built PageRain to be useful.<br><span style="color:#6d7688;">We're running it to be good.</span></h2>
-  <p data-reveal style="max-width:660px;margin:22px auto 0;color:#a4adbf;font-size:17px;line-height:1.7;">PageRain is a small tool with modest subscription revenue. We don't need it to make us rich — so we're not going to let it. Here is exactly what we commit to, and exactly what we hold back.</p>
+  <h2 data-reveal style="margin:22px auto 0;font-weight:700;font-size:clamp(26px,6.2vw,44px);line-height:1.1;letter-spacing:-.02em;">We built PageRain to be useful.<br><span style="color:#6d7688;">We're running it to be good.</span></h2>
+  <p data-reveal style="max-width:660px;margin:22px auto 0;color:#a4adbf;font-size:clamp(15.5px,3.8vw,17px);line-height:1.7;">PageRain is a small tool with modest subscription revenue. We don't need it to make us rich — so we're not going to let it. Here is exactly what we commit to, and exactly what we hold back.</p>
 
-  <div style="margin-top:40px;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left;">
+  <div class="pledge-grid">
     <div data-reveal style="border-radius:18px;background:linear-gradient(180deg,#0f1b16,#0e121a);border:1px solid #24513c;padding:26px;">
       <div style="display:flex;align-items:center;gap:11px;">
         <span style="width:40px;height:40px;border-radius:11px;background:rgba(47,208,138,.16);color:#2fd08a;font:700 18px 'Space Grotesk';display:flex;align-items:center;justify-content:center;">✓</span>
@@ -134,52 +162,18 @@
     </div>
   </div>
 
-  <p data-reveal style="max-width:680px;margin:26px auto 0;color:#6d7688;font-size:13.5px;line-height:1.6;font-family:'IBM Plex Mono';">Net profit = subscription &amp; usage revenue − operating costs − a capped reserve − any unrecovered losses from earlier periods. We donate 100% of that net profit in 2026–2027 and never less than 80% in any year after. If PageRain runs at break-even or at a loss, the pledge gives $0 for that period. Giving resumes only after the accumulated loss has been fully recovered and PageRain is generating net profit again.</p>
-</section>
-
-<!-- ===================== WHERE THE MONEY GOES ===================== -->
-<section id="where" style="max-width:1080px;margin:0 auto;padding:80px 24px;">
-  <div data-reveal style="text-align:center;margin-bottom:44px;">
-    <span style="display:inline-block;padding:6px 13px;border-radius:999px;background:rgba(115,109,255,.14);border:1px solid rgba(115,109,255,.3);color:#a89fff;font:600 12px 'Instrument Sans';">Follow the dollar</span>
-    <h2 style="margin:20px 0 0;font-weight:700;font-size:clamp(28px,3.6vw,44px);letter-spacing:-.02em;">Every dollar of revenue, split honestly.</h2>
-    <p style="max-width:560px;margin:16px auto 0;color:#a4adbf;font-size:16px;line-height:1.6;">The percentages below are illustrative. Real percentages will vary with costs.</p>
-  </div>
-
-  <div data-reveal style="border-radius:22px;background:#0e121a;border:1px solid #262d3c;box-shadow:0 24px 60px rgba(0,0,0,.5);padding:30px;">
-    <!-- stacked allocation bar -->
-    <div style="display:flex;height:64px;border-radius:14px;overflow:hidden;border:1px solid #242a37;">
-      <div style="flex:0 0 62%;background:linear-gradient(180deg,rgba(47,208,138,.85),#2fd08a);display:flex;align-items:center;justify-content:center;color:#04140c;font:700 15px 'Space Grotesk';">62% → charity</div>
-      <div style="flex:0 0 30%;background:#1d2230;display:flex;align-items:center;justify-content:center;color:#cdd3df;font:600 13px 'Instrument Sans';border-left:1px solid #0e121a;">30% operating cost</div>
-      <div style="flex:0 0 8%;background:rgba(240,168,56,.28);display:flex;align-items:center;justify-content:center;color:#f0a838;font:600 11px 'Instrument Sans';border-left:1px solid #0e121a;">8%</div>
-    </div>
-    <div style="margin-top:20px;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
-      <div style="display:flex;gap:11px;align-items:flex-start;">
-        <span style="margin-top:3px;width:12px;height:12px;border-radius:4px;background:#2fd08a;flex-shrink:0;"></span>
-        <div><div style="font:600 14px 'Space Grotesk';color:#eef1f7;">Donated profit</div><p style="margin:4px 0 0;color:#a4adbf;font:400 13px/1.5 'Instrument Sans';">100% of net profit — the entire green slice — sent to vetted human-rights charities.</p></div>
-      </div>
-      <div style="display:flex;gap:11px;align-items:flex-start;">
-        <span style="margin-top:3px;width:12px;height:12px;border-radius:4px;background:#3a4152;flex-shrink:0;"></span>
-        <div><div style="font:600 14px 'Space Grotesk';color:#eef1f7;">Operating cost</div><p style="margin:4px 0 0;color:#a4adbf;font:400 13px/1.5 'Instrument Sans';">Servers, platform API fees, payment processing, and the team keeping it live.</p></div>
-      </div>
-      <div style="display:flex;gap:11px;align-items:flex-start;">
-        <span style="margin-top:3px;width:12px;height:12px;border-radius:4px;background:#f0a838;flex-shrink:0;"></span>
-        <div><div style="font:600 14px 'Space Grotesk';color:#eef1f7;">Capped reserve</div><p style="margin:4px 0 0;color:#a4adbf;font:400 13px/1.5 'Instrument Sans';">A small buffer, capped at 3 months of costs, so a lean month can't break the pledge.</p></div>
-      </div>
-    </div>
-  </div>
-
-  <p data-reveal style="text-align:center;margin:22px auto 0;max-width:620px;color:#6d7688;font:500 13px 'Instrument Sans';line-height:1.6;">Once the reserve hits its 3-month cap, its whole share rolls into the donation too. The reserve exists to protect the promise — not to quietly accumulate a fund.</p>
+  <p data-reveal style="max-width:680px;margin:26px auto 0;color:#6d7688;font-size:13.5px;line-height:1.6;font-family:'IBM Plex Mono';overflow-wrap:anywhere;">Net profit = subscription &amp; usage revenue − operating costs − a capped reserve − any unrecovered losses from earlier periods. We donate 100% of that net profit in 2026–2027 and never less than 80% in any year after. If PageRain runs at break-even or at a loss, the pledge gives $0 for that period. Giving resumes only after the accumulated loss has been fully recovered and PageRain is generating net profit again.</p>
 </section>
 
 <!-- ===================== CAUSES ===================== -->
 <section id="causes" style="background:#080a11;border-top:1px solid #161b26;border-bottom:1px solid #161b26;">
-  <div style="max-width:1080px;margin:0 auto;padding:84px 24px;">
+  <div class="causes-wrap">
     <div data-reveal style="text-align:center;margin-bottom:44px;">
       <span style="display:inline-block;padding:6px 13px;border-radius:999px;background:rgba(47,208,138,.14);border:1px solid rgba(47,208,138,.3);color:#7ee6b8;font:600 12px 'Instrument Sans';">Where it lands</span>
       <h2 style="margin:20px 0 0;font-weight:700;font-size:clamp(28px,3.6vw,42px);letter-spacing:-.02em;">Causes we give to.</h2>
       <p style="max-width:600px;margin:16px auto 0;color:#a4adbf;font-size:16px;line-height:1.6;">We give to established, independently-rated organisations defending human rights — spread across the areas below so no single quarter is a lottery for one cause.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+    <div class="causes-grid">
       <div data-reveal style="border-radius:16px;background:#0e121a;border:1px solid #242a37;padding:24px;">
         <div style="width:38px;height:38px;border-radius:10px;background:linear-gradient(140deg,#2fd08a,#3ecbef);"></div>
         <h4 style="margin:16px 0 0;font-size:17px;">Civil &amp; political rights</h4>
@@ -215,19 +209,19 @@
 </section>
 
 <!-- ===================== FINAL CTA ===================== -->
-<section style="max-width:1080px;margin:0 auto;padding:20px 24px 100px;">
-  <div data-reveal style="position:relative;overflow:hidden;border-radius:26px;border:1px solid #24513c;background:linear-gradient(135deg,#0f2119,#0c0f1c);padding:64px 40px;text-align:center;">
-    <div data-anim style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:520px;height:320px;background:radial-gradient(circle,rgba(47,208,138,.36),transparent 62%);filter:blur(30px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite;"></div>
+<section class="cta-section" style="max-width:1080px;margin:0 auto;padding:20px 24px 100px;">
+  <div data-reveal class="cta-panel">
+    <div data-anim style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:min(520px,120vw);height:320px;background:radial-gradient(circle,rgba(47,208,138,.36),transparent 62%);filter:blur(30px);pointer-events:none;animation:glowPulse 8s ease-in-out infinite;"></div>
     <div style="position:relative;z-index:1;">
-      <h2 style="font-weight:700;font-size:clamp(30px,4.4vw,52px);line-height:1.05;letter-spacing:-.025em;">Subscribe to PageRain,<br>fund human rights.</h2>
-      <p style="max-width:540px;margin:18px auto 0;color:#c2c8d6;font-size:17.5px;line-height:1.6;">The same tool that keeps your artists' feeds full turns its profit into support for people who need it: 100% in 2026–2027, and at least 80% every year thereafter.</p>
+      <h2 style="font-weight:700;font-size:clamp(28px,6vw,52px);line-height:1.05;letter-spacing:-.025em;">Subscribe to PageRain,<br>fund human rights.</h2>
+      <p style="max-width:540px;margin:18px auto 0;color:#c2c8d6;font-size:clamp(15.5px,3.8vw,17.5px);line-height:1.6;">The same tool that keeps your artists' feeds full turns its profit into support for people who need it: 100% in 2026–2027, and at least 80% every year thereafter.</p>
     </div>
   </div>
 </section>
 
 <!-- ===================== FOOTER ===================== -->
 <footer style="border-top:1px solid #161b26;background:#080a11;">
-  <div style="max-width:1080px;margin:0 auto;padding:40px 24px;display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+  <div class="footer-bar">
     <a href="#top" style="display:inline-flex;align-items:center;gap:10px;">
       <span style="width:28px;height:28px;flex:0 0 28px;box-sizing:border-box;border-radius:8px;background:linear-gradient(150deg,#736dff,#3ecbef);display:inline-flex;align-items:flex-end;justify-content:center;gap:2px;padding-bottom:6px;overflow:hidden;">
         <span style="width:2.5px;height:8px;border-radius:2px;background:rgba(255,255,255,.92);"></span>
@@ -236,12 +230,12 @@
       </span>
       <span style="font-family:'Space Grotesk';font-weight:700;font-size:17px;color:#eef1f7;">PageRain<span style="color:#3ecbef;">.org</span></span>
     </a>
-    <span style="margin-left:6px;color:#6d7688;font:500 13px 'Instrument Sans';">100% in 2026–2027 · At least 80% thereafter, always.</span>
-    <div style="margin-left:auto;display:flex;gap:20px;">
+    <span class="footer-tagline" style="margin-left:6px;color:#6d7688;font:500 13px 'Instrument Sans';">100% in 2026–2027 · At least 80% thereafter, always.</span>
+    <div class="footer-links">
       <a href="#pledge" style="color:#a4adbf;font:500 13px 'Instrument Sans';">The pledge</a>
       <a href="https://pagerain.com" style="color:#a4adbf;font:500 13px 'Instrument Sans';">pagerain.com ↗</a>
     </div>
-    <span style="width:100%;color:#4b5468;font:500 12.5px 'Instrument Sans';border-top:1px solid #161b26;padding-top:18px;margin-top:4px;">© 2026 PageRain · The giving pledge covers 100% of net profit in 2026 and 2027 and at least 80% every calendar year thereafter, with no end date. The allocation example is illustrative.</span>
+    <span style="width:100%;color:#4b5468;font:500 12.5px 'Instrument Sans';border-top:1px solid #161b26;padding-top:18px;margin-top:4px;">© 2026 PageRain · The giving pledge covers 100% of net profit in 2026 and 2027 and at least 80% every calendar year thereafter, with no end date.</span>
   </div>
 </footer>
 
